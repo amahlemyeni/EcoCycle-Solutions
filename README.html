@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoCycle Solutions — README &amp; Changelog (Part 3)</title>
+<style>
+  /* === BASE === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 15px; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f7f2;
+    color: #2d3b2d;
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  /* === COVER PAGE === */
+  .cover {
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #43a047 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    page-break-after: always;
+  }
+  .cover-logo {
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+    margin: 0 auto 32px;
+    border: 3px solid rgba(255,255,255,0.4);
+  }
+  .cover h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .cover h2 { font-size: 1.3rem; font-weight: 400; opacity: 0.85; margin-bottom: 40px; }
+  .cover-meta {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 28px 48px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .cover-meta p { margin: 6px 0; font-size: 0.95rem; }
+  .cover-meta strong { opacity: 0.7; font-weight: 500; }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  /* === CONTENT === */
+  .content { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+
+  h1, h2, h3, h4 { color: #1b5e20; font-weight: 700; line-height: 1.25; }
+  h1 { font-size: 2rem; margin: 48px 0 16px; border-bottom: 3px solid #2e7d32; padding-bottom: 12px; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 1.5rem; margin: 40px 0 12px; }
+  h2::before { content: '◆ '; color: #43a047; font-size: 0.9em; }
+  h3 { font-size: 1.15rem; margin: 28px 0 8px; color: #2e7d32; }
+  h4 { font-size: 1rem; margin: 20px 0 6px; color: #388e3c; }
+
+  p { margin-bottom: 12px; }
+
+  a { color: #2e7d32; }
+
+  /* Code / pre */
+  code {
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.88rem;
+    color: #1b5e20;
+  }
+  pre {
+    background: #1b2e1b;
+    color: #a5d6a7;
+    border-radius: 10px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.85rem;
+    margin: 16px 0 24px;
+    line-height: 1.5;
+    border: 1px solid #2e7d32;
+  }
+  pre code { background: none; border: none; padding: 0; color: inherit; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 28px;
+    font-size: 0.9rem;
+  }
+  th {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #c8e6c9;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f1f8f1; }
+
+  /* Lists */
+  ul, ol { margin: 10px 0 18px 24px; }
+  li { margin-bottom: 5px; }
+
+  /* Section card */
+  .section-card {
+    background: white;
+    border-left: 5px solid #2e7d32;
+    border-radius: 0 10px 10px 0;
+    padding: 24px 28px;
+    margin: 28px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+
+  /* Feature grid */
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .feat-box {
+    background: white;
+    border: 1px solid #c8e6c9;
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .feat-box h4 { margin-top: 0; }
+
+  /* Divider */
+  hr { border: none; border-top: 2px solid #c8e6c9; margin: 48px 0; }
+
+  /* Footer */
+  .doc-footer {
+    background: #1b5e20;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 28px 40px;
+    margin-top: 60px;
+    font-size: 0.85rem;
+  }
+
+  /* Print button */
+  .print-bar {
+    background: #2e7d32;
+    color: white;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .print-bar p { font-size: 0.9rem; opacity: 0.9; margin: 0; }
+  .print-btn {
+    background: white;
+    color: #1b5e20;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .print-btn:hover { background: #e8f5e9; }
+
+  /* === PRINT STYLES === */
+  @media print {
+    .print-bar { display: none !important; }
+    .cover { min-height: auto; padding: 80px 60px; }
+    body { background: white; }
+    .content { padding: 40px 20px; }
+    h1 { page-break-before: auto; }
+    table { page-break-inside: avoid; }
+    .section-card { page-break-inside: avoid; box-shadow: none; border: 1px solid #c8e6c9; }
+    pre { page-break-inside: avoid; }
+    @page { margin: 20mm; size: A4; }
+    @page :first { margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Print bar -->
+<div class="print-bar">
+    <p>📄 EcoCycle Solutions — Part 3 Documentation &amp; Changelog</p>
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<!-- COVER PAGE -->
+<div class="cover">
+    <div class="cover-logo">♻️</div>
+    <div class="cover-badge">Web Development — Part 3</div>
+    <h1>EcoCycle Solutions</h1>
+    <h2>Enhanced Website — Technical Documentation &amp; Changelog</h2>
+    <div class="cover-meta">
+        <p><strong>Student:</strong> Takunda Moyo</p>
+        <p><strong>Email:</strong> takundajohnm@gmail.com</p>
+        <p><strong>Phone:</strong> 068 285 2438</p>
+        <p><strong>Version:</strong> 3.0.0</p>
+        <p><strong>Date:</strong> 18 June 2026</p>
+        <p><strong>Assignment:</strong> Part 3 — JavaScript, SEO &amp; Forms</p>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+    <h1>Project Overview</h1>
+    <p>EcoCycle Solutions is a South African environmental non-profit organisation based in Johannesburg, Gauteng. The website promotes their recycling collection services, environmental education workshops, community clean-up campaigns, and corporate sustainability consulting.</p>
+    <p>This documentation covers all Part 3 enhancements — JavaScript interactivity, full SEO implementation, and two validated forms with dynamic responses.</p>
+
+    <h1>File Structure</h1>
+    <pre>ecocycle-part3/
+├── index.html          — Home page (hero, stats, services preview, CTA)
+├── about.html          — About page (mission/vision, team, FAQ accordion, map)
+├── services.html       — Services page (tab filter, search, service cards)
+├── resources.html      — Resources page (guides + photo gallery + lightbox)
+├── enquiry.html        — Enquiry form (NEW — Part 3)
+├── contact.html        — Contact form (enhanced — Part 3)
+├── robots.txt          — SEO: crawler instructions
+├── sitemap.xml         — SEO: site structure for search engines
+├── style.css           — Full enhanced stylesheet
+├── README.md           — This document (Markdown version)
+├── README.html         — This document (PDF-ready HTML)
+├── images/
+│   ├── hero.jpg
+│   ├── recycling-collection.jpg
+│   ├── education-workshop.jpg
+│   ├── community-cleanup.jpg
+│   └── sustainability-accounting.jpg
+└── js/
+    ├── main.js         — UI: accordion, tabs, lightbox, map, animations, counter
+    └── forms.js        — Forms: validation, async submit, dynamic response</pre>
+
+    <hr>
+
+    <h1>Part 3 Features — JavaScript</h1>
+
+    <h2>Interactive UI Elements</h2>
+    <table>
+        <tr><th>Feature</th><th>Page</th><th>Implementation</th></tr>
+        <tr><td><strong>Accordion (FAQ)</strong></td><td>about.html</td><td>JS open/close with ARIA <code>aria-expanded</code>; CSS <code>max-height</code> transition; clicking one closes others</td></tr>
+        <tr><td><strong>Tab Filter</strong></td><td>services.html, resources.html</td><td>Tab buttons toggle <code>[data-category]</code> card visibility; keyboard accessible with <code>role="tab"</code></td></tr>
+        <tr><td><strong>Lightbox Gallery</strong></td><td>resources.html</td><td>Full-screen modal with prev/next buttons and keyboard arrows; Escape to close; focus trap</td></tr>
+        <tr><td><strong>Leaflet.js Map</strong></td><td>about.html, contact.html</td><td>OpenStreetMap tiles; centred on Johannesburg (-26.2041, 28.0473); custom SVG marker with popup</td></tr>
+        <tr><td><strong>Scroll Animations</strong></td><td>All pages</td><td><code>IntersectionObserver</code> adds <code>.visible</code> class to <code>.reveal</code> elements; CSS fade/slide transitions</td></tr>
+        <tr><td><strong>Hamburger Nav</strong></td><td>All pages</td><td>ARIA-controlled toggle; closes on outside click; keyboard accessible</td></tr>
+        <tr><td><strong>Scroll-to-Top</strong></td><td>All pages</td><td>Fixed button appears after 400px scroll; smooth scroll to top</td></tr>
+    </table>
+
+    <h2>Dynamic Content</h2>
+    <table>
+        <tr><th>Feature</th><th>Page</th><th>Implementation</th></tr>
+        <tr><td><strong>Search Filter</strong></td><td>services.html</td><td>Live <code>input</code> listener; matches keyword against card text + active tab category; shows "no results" message</td></tr>
+        <tr><td><strong>Stats Counter</strong></td><td>index.html</td><td><code>IntersectionObserver</code> triggers count-up animation from 0 to target using <code>data-count</code> + <code>data-suffix</code> attributes</td></tr>
+        <tr><td><strong>Dynamic Enquiry Response</strong></td><td>enquiry.html</td><td>After async submit, JS renders a response table with reference number, cost, availability, and next steps based on selected enquiry type</td></tr>
+        <tr><td><strong>Toast Notifications</strong></td><td>All pages</td><td>Shared <code>showToast()</code> utility creates floating notifications for success and error states</td></tr>
+    </table>
+
+    <hr>
+
+    <h1>Part 3 Features — SEO</h1>
+
+    <h2>On-Page SEO (Per Page)</h2>
+    <table>
+        <tr><th>Element</th><th>Implementation</th></tr>
+        <tr><td>Title Tags</td><td>Unique, keyword-rich &lt;title&gt; on every page (50–60 chars)</td></tr>
+        <tr><td>Meta Descriptions</td><td>Compelling 150–160 character descriptions per page</td></tr>
+        <tr><td>Header Hierarchy</td><td>Correct H1 → H2 → H3 structure throughout all pages</td></tr>
+        <tr><td>Image Alt Text</td><td>Descriptive alt text on every &lt;img&gt;; loading="lazy" on non-hero images</td></tr>
+        <tr><td>Canonical URLs</td><td>&lt;link rel="canonical"&gt; on every page</td></tr>
+        <tr><td>Open Graph Tags</td><td>og:title, og:description, og:image, og:url, og:type per page</td></tr>
+        <tr><td>Twitter Card</td><td>summary_large_image card on home page</td></tr>
+        <tr><td>Schema.org (JSON-LD)</td><td>Organization on home; AboutPage, Service, ContactPage on respective pages</td></tr>
+        <tr><td>Internal Linking</td><td>All pages linked in nav; contextual body links between related pages</td></tr>
+        <tr><td>Mobile Friendly</td><td>Responsive CSS grid; fluid typography; hamburger nav on mobile</td></tr>
+    </table>
+
+    <h2>Technical SEO</h2>
+    <div class="feat-grid">
+        <div class="feat-box">
+            <h4>robots.txt</h4>
+            <p>Instructs all crawlers to allow indexing; disallows <code>/admin/</code> and <code>/private/</code>; includes <code>Crawl-delay: 10</code>; references <code>sitemap.xml</code>.</p>
+        </div>
+        <div class="feat-box">
+            <h4>sitemap.xml</h4>
+            <p>Lists all 6 pages with <code>lastmod</code> (2026-06-18), <code>changefreq</code>, and <code>priority</code> values. Conforms to sitemaps.org protocol.</p>
+        </div>
+        <div class="feat-box">
+            <h4>Page Speed</h4>
+            <p>Lazy loading on images; CDN-hosted Leaflet.js; all <code>&lt;script&gt;</code> tags placed at end of <code>&lt;body&gt;</code> (no render-blocking).</p>
+        </div>
+        <div class="feat-box">
+            <h4>Accessibility (a11y)</h4>
+            <p>Skip link; ARIA labels on interactive elements; <code>role="alert"</code> on error messages; <code>aria-live</code> on form responses; keyboard navigation throughout.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h1>Part 3 Features — Forms</h1>
+
+    <h2>Enquiry Form (enquiry.html)</h2>
+    <div class="section-card">
+        <p><strong>Purpose:</strong> Allow users to enquire about services, products, volunteer opportunities, or sponsorship. Displays a dynamic cost and availability response after submission.</p>
+        <h4>Fields</h4>
+        <p>First Name, Last Name, Email, Phone, Enquiry Type (service / volunteer / sponsor / product), Service Type <em>(conditional)</em>, Preferred Date, Organisation, Message, Referral source.</p>
+        <h4>Validation Rules</h4>
+        <table>
+            <tr><th>Field</th><th>Rules</th></tr>
+            <tr><td>First / Last Name</td><td>Required; min 2 chars; max 50 chars</td></tr>
+            <tr><td>Email</td><td>Required; valid email format (regex)</td></tr>
+            <tr><td>Phone</td><td>Required; 7–15 digits/symbols regex</td></tr>
+            <tr><td>Enquiry Type</td><td>Required; must select from dropdown</td></tr>
+            <tr><td>Service</td><td>Required <em>only when</em> Enquiry Type = "service"</td></tr>
+            <tr><td>Date</td><td>Optional; must be a valid parsable date</td></tr>
+            <tr><td>Message</td><td>Required; min 10 chars; max 1000 chars</td></tr>
+        </table>
+        <h4>Dynamic Response (after submission)</h4>
+        <table>
+            <tr><th>Service Type</th><th>Estimated Cost</th><th>Availability</th></tr>
+            <tr><td>Recycling Collection</td><td>R850 – R1 500/month</td><td>Within 5 business days</td></tr>
+            <tr><td>Environmental Workshop</td><td>R1 200 per session</td><td>Bookable 2 weeks in advance</td></tr>
+            <tr><td>Community Clean-Up</td><td>R650 per campaign</td><td>Available on weekends</td></tr>
+            <tr><td>Corporate Sustainability Audit</td><td>R5 000 – R12 000</td><td>Quote within 48 hours</td></tr>
+            <tr><td>Volunteer Application</td><td>Free</td><td>Reviewed within 3 business days</td></tr>
+            <tr><td>Sponsorship</td><td>From R2 500/month</td><td>Team contacts within 48 hours</td></tr>
+        </table>
+    </div>
+
+    <h2>Contact Form (contact.html)</h2>
+    <div class="section-card">
+        <p><strong>Purpose:</strong> General messages, feedback, complaints, partnerships, and press enquiries. Compiles form data into a <code>mailto:</code> URI targeting <code>takundajohnm@gmail.com</code>.</p>
+        <h4>Fields</h4>
+        <p>First Name, Last Name, Email, Phone, Message Type (General / Feedback / Complaint / Partnership / Media / Other), Subject, Message, Privacy consent checkbox.</p>
+        <h4>After Submission</h4>
+        <ol>
+            <li>Form data is sanitised and compiled into a <code>mailto:</code> link with <code>subject</code> and <code>body</code> query parameters.</li>
+            <li>A ticket ID (<code>TKT-XXXXXXXXX</code>) is displayed to the user.</li>
+            <li>A button opens the user's default email client with the message pre-filled.</li>
+            <li>The user sends the email directly — no server-side storage required.</li>
+        </ol>
+    </div>
+
+    <h2>Shared Validation System (js/forms.js)</h2>
+    <ul>
+        <li>Real-time validation on <code>blur</code> and <code>change</code> events</li>
+        <li>Red border + ARIA <code>role="alert"</code> error message below invalid fields</li>
+        <li>Green border on valid fields as positive feedback</li>
+        <li>Prevents submission if <em>any</em> field is invalid; focus moves to first error</li>
+        <li>Loading spinner on submit button during 1.2s async delay</li>
+        <li>Toast notifications for success and error states</li>
+        <li><code>escHtml()</code> sanitises all user-generated content before DOM insertion</li>
+    </ul>
+
+    <hr>
+
+    <h1>Deployment</h1>
+    <table>
+        <tr><th>Platform</th><th>Steps</th></tr>
+        <tr><td>Netlify</td><td>Drag-and-drop the <code>ecocycle-part3</code> folder at netlify.com/drop — live in seconds</td></tr>
+        <tr><td>GitHub Pages</td><td>Push to <code>main</code> branch; enable Pages in repository Settings → Pages</td></tr>
+        <tr><td>Vercel</td><td>Import GitHub repo; zero-config static deployment</td></tr>
+    </table>
+
+    <hr>
+
+    <h1>References</h1>
+    <ol>
+        <li>MDN Web Docs — HTML Forms: <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms">developer.mozilla.org/en-US/docs/Learn/Forms</a></li>
+        <li>MDN Web Docs — Constraint Validation API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">developer.mozilla.org</a></li>
+        <li>Leaflet.js Documentation: <a href="https://leafletjs.com/reference.html">leafletjs.com/reference.html</a></li>
+        <li>OpenStreetMap: <a href="https://www.openstreetmap.org">openstreetmap.org</a></li>
+        <li>Google Search Central — SEO Starter Guide: <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide">developers.google.com</a></li>
+        <li>Schema.org — Organization: <a href="https://schema.org/Organization">schema.org/Organization</a></li>
+        <li>Sitemaps Protocol: <a href="https://www.sitemaps.org/protocol.html">sitemaps.org/protocol.html</a></li>
+        <li>W3C — ARIA Authoring Practices: <a href="https://www.w3.org/WAI/ARIA/apg/">w3.org/WAI/ARIA/apg</a></li>
+        <li>IntersectionObserver API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver">developer.mozilla.org</a></li>
+        <li>Open Graph Protocol: <a href="https://ogp.me">ogp.me</a></li>
+    </ol>
+
+    <hr>
+
+    <h1>Changelog</h1>
+
+    <div class="section-card">
+        <h2 style="margin-top:0;">v3.0.0 — 2026-06-18 (Part 3 Submission)</h2>
+
+        <h3>New Pages</h3>
+        <ul>
+            <li><span class="badge">New</span> <strong>enquiry.html</strong> — Dedicated enquiry page with dynamic cost/availability response</li>
+        </ul>
+
+        <h3>New JavaScript Features</h3>
+        <ul>
+            <li><span class="badge">New</span> <code>js/main.js</code> — Accordion, tabs, lightbox, Leaflet maps, scroll animations, stats counter, scroll-to-top, hamburger nav</li>
+            <li><span class="badge">New</span> <code>js/forms.js</code> — Full form validation, async submit simulation, dynamic response generation, mailto compilation, toast notifications</li>
+            <li><span class="badge">New</span> FAQ Accordion on <code>about.html</code> — 6 questions, animated, ARIA-compliant</li>
+            <li><span class="badge">New</span> Tab filter on <code>services.html</code> and <code>resources.html</code></li>
+            <li><span class="badge">New</span> Live search bar on <code>services.html</code></li>
+            <li><span class="badge">New</span> Lightbox gallery on <code>resources.html</code></li>
+            <li><span class="badge">New</span> Leaflet.js interactive map on <code>about.html</code> and <code>contact.html</code></li>
+            <li><span class="badge">New</span> Animated stats counter on <code>index.html</code> (2,400+ tonnes, 180+ workshops, 56 communities, 320+ partners)</li>
+            <li><span class="badge">New</span> Scroll-reveal animations with IntersectionObserver on all pages</li>
+            <li><span class="badge">New</span> Toast notification system across all pages</li>
+        </ul>
+
+        <h3>SEO Enhancements</h3>
+        <ul>
+            <li><span class="badge">New</span> Unique &lt;title&gt; and &lt;meta name="description"&gt; on all 6 pages</li>
+            <li><span class="badge">New</span> Open Graph tags on all pages; Twitter Card on home page</li>
+            <li><span class="badge">New</span> Schema.org JSON-LD structured data on all pages</li>
+            <li><span class="badge">New</span> <code>robots.txt</code> with crawler rules and sitemap reference</li>
+            <li><span class="badge">New</span> <code>sitemap.xml</code> listing all 6 pages with priority and changefreq</li>
+            <li><span class="badge">New</span> <code>&lt;link rel="canonical"&gt;</code> on every page</li>
+            <li><span class="badge">New</span> Descriptive alt text and lazy loading on all images</li>
+            <li><span class="badge">New</span> Breadcrumb navigation on all inner pages</li>
+        </ul>
+
+        <h3>Navigation &amp; Structure</h3>
+        <ul>
+            <li><span class="badge">Enhanced</span> Navigation updated with <code>enquiry.html</code> link on all pages</li>
+            <li><span class="badge">New</span> Hamburger menu for mobile with ARIA controls</li>
+            <li><span class="badge">New</span> Skip navigation link for accessibility</li>
+            <li><span class="badge">Enhanced</span> Four-column footer with brand info, links, contact, and services</li>
+        </ul>
+
+        <h3>Design &amp; UX</h3>
+        <ul>
+            <li><span class="badge">Enhanced</span> Hero section with dual CTA buttons and overlay text</li>
+            <li><span class="badge">New</span> Service price indicators on all service cards</li>
+            <li><span class="badge">New</span> Team section on <code>about.html</code> with four team members</li>
+            <li><span class="badge">New</span> Page hero banners on all inner pages</li>
+            <li><span class="badge">New</span> Section label tags (small uppercase caps above headings)</li>
+            <li><span class="badge">New</span> CSS custom properties for consistent colour theming</li>
+            <li><span class="badge">New</span> Scroll-to-top button on all pages</li>
+            <li><span class="badge">New</span> Contact info grid on <code>contact.html</code> with icons</li>
+        </ul>
+
+        <h3>Part 2 Feedback Corrections</h3>
+        <ul>
+            <li><span class="badge">Fixed</span> All form inputs now have associated <code>&lt;label&gt;</code> elements</li>
+            <li><span class="badge">Fixed</span> Added <code>required</code> attributes and correct <code>type</code> values to form fields</li>
+            <li><span class="badge">Fixed</span> Replaced non-functional form <code>action</code> attributes with JavaScript handling</li>
+            <li><span class="badge">Fixed</span> Added <code>&lt;main id="main"&gt;</code> landmark on all pages</li>
+            <li><span class="badge">Fixed</span> Missing <code>alt</code> attributes on images in <code>services.html</code></li>
+        </ul>
+    </div>
+
+</div><!-- end .content -->
+
+<div class="doc-footer">
+    <p>EcoCycle Solutions — Web Development Part 3 | Takunda Moyo | 2026-06-18</p>
+    <p style="margin-top:6px;opacity:0.6;font-size:0.8rem;">Contact: takundajohnm@gmail.com | 068 285 2438</p>
+</div>
+
+</body>
+</html>

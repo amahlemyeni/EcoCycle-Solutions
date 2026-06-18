@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://ecocyclesolutions.co.za/sitemap.xml
