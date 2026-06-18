@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enquiry | EcoCycle Solutions — Request a Quote or Volunteer</title>
+<meta name="description" content="Submit an enquiry about EcoCycle Solutions' recycling services, environmental workshops, volunteer opportunities, or sponsorship packages. Get an instant cost and availability response.">
+<meta name="keywords" content="EcoCycle enquiry, recycling quote South Africa, volunteer EcoCycle, sponsor environmental organisation">
+<meta name="author" content="EcoCycle Solutions">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ecocyclesolutions.co.za/enquiry.html">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://ecocyclesolutions.co.za/enquiry.html">
+<meta property="og:title"       content="Enquiry | EcoCycle Solutions">
+<meta property="og:description" content="Enquire about our recycling services, workshops, volunteering, or sponsorship. Get an instant cost and availability response.">
+<meta property="og:image"       content="images/hero.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+    <h1>EcoCycle Solutions</h1>
+    <p>Creating a cleaner and more sustainable South Africa through recycling and environmental education.</p>
+</header>
+
+<nav aria-label="Main navigation">
+    <div class="nav-container">
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="enquiry.html">Enquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main id="main">
+
+<div class="page-hero">
+    <h1>Submit an Enquiry</h1>
+    <p>Enquire about our services, products, volunteering, or sponsorship — and receive an instant cost and availability response.</p>
+</div>
+
+<nav aria-label="Breadcrumb">
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>›</span>Enquiry
+    </div>
+</nav>
+
+<section aria-labelledby="enquiryHeading">
+<div class="container">
+
+    <!-- Info strip -->
+    <div class="grid" style="margin-bottom:50px;">
+        <div class="card reveal">
+            <div class="card-content">
+                <h3>🛠️ Services &amp; Products</h3>
+                <p>Get a cost estimate and availability window for any of our environmental services or eco-products.</p>
+            </div>
+        </div>
+        <div class="card reveal reveal-delay-1">
+            <div class="card-content">
+                <h3>🙋 Volunteer</h3>
+                <p>Join our team! Submit your details and we'll match you with the right volunteer opportunity.</p>
+            </div>
+        </div>
+        <div class="card reveal reveal-delay-2">
+            <div class="card-content">
+                <h3>🤝 Sponsorship</h3>
+                <p>Support our mission. Explore our sponsorship packages and how your brand can make an impact.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="enquiryHeading">Enquiry Form</h2>
+    <p class="section-text">All fields marked <abbr title="required">*</abbr> are required. You will receive an instant response with pricing and availability information.</p>
+
+    <div class="form-card">
+        <h3>Submit Your Enquiry</h3>
+        <p class="form-subtitle">We respond to all enquiries within 1–2 business days.</p>
+
+        <form id="enquiryForm" novalidate aria-label="Enquiry form">
+
+            <!-- Name row -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name <abbr title="required">*</abbr></label>
+                    <input type="text" id="firstName" name="firstName"
+                           placeholder="e.g. Thabo" required minlength="2" maxlength="50"
+                           autocomplete="given-name" aria-describedby="firstNameErr">
+                    <span class="error-msg" id="firstNameErr" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name <abbr title="required">*</abbr></label>
+                    <input type="text" id="lastName" name="lastName"
+                           placeholder="e.g. Dlamini" required minlength="2" maxlength="50"
+                           autocomplete="family-name" aria-describedby="lastNameErr">
+                    <span class="error-msg" id="lastNameErr" role="alert"></span>
+                </div>
+            </div>
+
+            <!-- Email & Phone -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address <abbr title="required">*</abbr></label>
+                    <input type="email" id="email" name="email"
+                           placeholder="you@example.com" required
+                           autocomplete="email" aria-describedby="emailErr">
+                    <span class="error-msg" id="emailErr" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <abbr title="required">*</abbr></label>
+                    <input type="tel" id="phone" name="phone"
+                           placeholder="e.g. 068 285 2438" required data-phone
+                           autocomplete="tel" aria-describedby="phoneErr">
+                    <span class="error-msg" id="phoneErr" role="alert"></span>
+                </div>
+            </div>
+
+            <!-- Enquiry type -->
+            <div class="form-group">
+                <label for="enquiryType">Enquiry Type <abbr title="required">*</abbr></label>
+                <select id="enquiryType" name="enquiryType" required aria-describedby="enquiryTypeErr">
+                    <option value="">— Please select —</option>
+                    <option value="service">Service / Product Quote</option>
+                    <option value="volunteer">Volunteer Application</option>
+                    <option value="sponsor">Sponsorship Enquiry</option>
+                    <option value="product">Product Purchase</option>
+                </select>
+                <span class="error-msg" id="enquiryTypeErr" role="alert"></span>
+            </div>
+
+            <!-- Service selection (shown when type = service) -->
+            <div class="form-group" id="serviceRow" style="display:none;">
+                <label for="serviceType">Select Service <abbr title="required">*</abbr></label>
+                <select id="serviceType" name="serviceType" aria-describedby="serviceTypeErr">
+                    <option value="">— Choose a service —</option>
+                    <option value="recycling">Recycling Collection</option>
+                    <option value="workshop">Environmental Workshop</option>
+                    <option value="cleanup">Community Clean-Up Campaign</option>
+                    <option value="corporate">Corporate Sustainability Consulting</option>
+                </select>
+                <span class="error-msg" id="serviceTypeErr" role="alert"></span>
+            </div>
+
+            <!-- Preferred date -->
+            <div class="form-group">
+                <label for="preferredDate">Preferred Date (optional)</label>
+                <input type="date" id="preferredDate" name="preferredDate"
+                       min="" aria-describedby="preferredDateErr">
+                <span class="error-msg" id="preferredDateErr" role="alert"></span>
+            </div>
+
+            <!-- Organisation (optional) -->
+            <div class="form-group">
+                <label for="organisation">Organisation / School (optional)</label>
+                <input type="text" id="organisation" name="organisation"
+                       placeholder="e.g. Sandton Primary School" maxlength="100">
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+                <label for="message">Additional Details <abbr title="required">*</abbr></label>
+                <textarea id="message" name="message" rows="5"
+                          placeholder="Tell us more about what you need, how many people are involved, your location, etc."
+                          required minlength="10" maxlength="1000"
+                          aria-describedby="messageErr"></textarea>
+                <span class="error-msg" id="messageErr" role="alert"></span>
+                <small style="color:#90a4ae;margin-top:4px;font-size:0.8rem;">Minimum 10 characters.</small>
+            </div>
+
+            <!-- How did you hear about us -->
+            <div class="form-group">
+                <label for="referral">How did you hear about us?</label>
+                <select id="referral" name="referral">
+                    <option value="">— Select —</option>
+                    <option value="search">Google / Search Engine</option>
+                    <option value="social">Social Media</option>
+                    <option value="word-of-mouth">Word of Mouth</option>
+                    <option value="school">School / University</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn" id="enquirySubmit">Submit Enquiry</button>
+                <button type="reset"  class="btn btn-outline" style="border-color:var(--green-mid);color:var(--green-mid);">Reset Form</button>
+            </div>
+
+        </form>
+
+        <!-- Dynamic response -->
+        <div id="enquiryResponse" class="enquiry-response" role="region" aria-live="polite" aria-label="Enquiry response"></div>
+    </div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>EcoCycle Solutions</h4>
+            <p>Creating a cleaner and more sustainable South Africa, one community at a time.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>📱 <a href="https://wa.me/27682852438">068 285 2438</a></p>
+            <p>✉️ <a href="mailto:takundajohnm@gmail.com">takundajohnm@gmail.com</a></p>
+            <p>📍 Johannesburg, Gauteng, South Africa</p>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="services.html">Recycling Collection</a></li>
+                <li><a href="services.html">Environmental Workshops</a></li>
+                <li><a href="services.html">Community Clean-Up</a></li>
+                <li><a href="services.html">Corporate Consulting</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 EcoCycle Solutions | Building a cleaner South Africa | <a href="sitemap.xml">Sitemap</a></p>
+    </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top">&#8679;</button>
+<script src="js/main.js"></script>
+<script src="js/forms.js"></script>
+<script>
+    // Set minimum date to today for the date picker
+    document.getElementById('preferredDate').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
