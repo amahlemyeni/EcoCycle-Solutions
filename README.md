@@ -220,6 +220,6 @@ The website is deployed as a static site. Recommended free platforms:
 - Added `lang="en"` to all `<html>` elements (was already present but confirmed).
 - Fixed missing `alt` attributes on service images in `services.html`.
 
----
+Amahle Myeni 
 
 *End of README*
